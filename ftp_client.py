@@ -1,5 +1,9 @@
 from ftplib import FTP
-ftp = FTP('iele1400.ddns.net','c_iele1400', 'uniandes2020')
+host = 'iele1400.ddns.net'
+user = 'c_iele1400'
+passwd = 'uniandes2020'
+ftp = FTP( 'localhost',user, passwd)
+
 print(ftp.retrlines('LIST'))
 
 ftp.quit()
