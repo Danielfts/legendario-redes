@@ -15,7 +15,7 @@ def descargar(archivo:str)->None:
         client_socket.send(archivo_descarga)
         info = client_socket.recv(4096)
         if info:
-            f = open('download.jpg', 'wb')
+            f = open(archivo, 'wb')
             while True:
                 data = client_socket.recv(4096)
                 print(data)
@@ -33,4 +33,4 @@ def descargar(archivo:str)->None:
         print('lmao noob {}'.format(e))
         client_socket.close()
 
-descargar('800k.jpg')
+descargar(input("Ingrese el nombre del archivo que desea descargar: "))
