@@ -15,7 +15,7 @@ def descargar(archivo:str)->None:
         client_socket.send(archivo_descarga)
         info = client_socket.recv(4096)
         if info:
-            f = open('download.jpg', 'wb')
+            f = open('socket_{}'.format(archivo), 'wb')
             while True:
                 data = client_socket.recv(4096)
                 print(data)
@@ -27,10 +27,21 @@ def descargar(archivo:str)->None:
                     f.write(data)
                 pass
             pass
+        else: client_socket.close()
         print(info)
 
     except os.error as e :
         print('lmao noob {}'.format(e))
-        client_socket.close()
 
-descargar('800k.jpg')
+
+def main():
+    while True:
+        print("Interfaz de consola para hacer descargas por medio de sockets y tcp\n"
+            "Daniel Felipe Triviño Santana y Yacob Andrés Lozano Espitia\n"
+            "Fundamentos de Redes - 2021-2\n"
+            "presione ctrl + c para salir del programa en cualquier momento")
+        file = input("Ingrese el nombre del archivo que desea descargar: ")
+        print("-"*10)
+        descargar(file)
+
+main()
