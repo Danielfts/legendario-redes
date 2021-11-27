@@ -1,6 +1,7 @@
 from ftplib import FTP
 from ftplib import all_errors
 from pythonping import ping
+import os
 host = 'iele1400.ddns.net'
 user = 'c_iele1400'
 passwd = 'uniandes2020'
@@ -9,11 +10,11 @@ def callback(data):
     # print(data)
     f.write(data)
 
-    p = ping(host, count = 1)
-    for i in p: 
-        i = str(i).split()[6][:-2]
-        print(i)
-        csv.write(i+'\n')
+    p = str(ping(host, count = 1)._responses[0]).split()
+    if len(p) == 7:
+        p = p[6][:-2]
+        print(p)
+        csv.write(p+'\n')
 
 def download(filename):
     try:
