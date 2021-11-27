@@ -5,3 +5,5 @@
 test.docx
 *.pcapng
 *.csv
+from pythonping import ping.py
+ping_test.py
