@@ -1,26 +1,37 @@
 import socket
 import os
+from pythonping import ping
+
 client_name = '0.0.0.0'
 client_port = 49809
 server_name = 'iele1400.ddns.net'
 server_port = 55555
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-client_socket.bind((client_name, client_port))
 
+# png = ping(TCP_IP, size=1, count=1)
 def descargar(archivo:str)->None:   
 
     try:
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client_socket.bind((client_name, client_port))
         client_socket.connect((server_name, server_port))
         archivo_descarga = archivo.encode()
         client_socket.send(archivo_descarga)
         info = client_socket.recv(4096)
+        print(info)
         if info:
             f = open('socket_{}'.format(archivo), 'wb')
+            csv = open('socket_{}_ping.csv'.format(archivo), 'w')
             while True:
                 data = client_socket.recv(4096)
-                print(data)
+                p = ping(server_name, count = 1)
+                for i in p: 
+                    i = str(i).split()[6][:-2]
+                    print(i)
+                    csv.write(i+'\n')
+                # print(data)
                 if data == b'':
                     f.close()
+                    csv.close
                     client_socket.close()
                     break
                 else:
