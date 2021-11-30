@@ -23,11 +23,11 @@ def descargar(archivo:str)->None:
             csv = open('socket_{}_ping.csv'.format(archivo), 'w')
             while True:
                 data = client_socket.recv(4096)
-                p = ping(server_name, count = 1)
-                for i in p: 
-                    i = str(i).split()[6][:-2]
-                    print(i)
-                    csv.write(i+'\n')
+                p = str(ping(server_name, count = 1)._responses[0]).split()
+                if len(p) == 7:
+                    p = p[6][:-2]
+                    print(p)
+                    csv.write(p+'\n')
                 # print(data)
                 if data == b'':
                     f.close()
