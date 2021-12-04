@@ -25,13 +25,13 @@ def download(filename): #usa como parametro el nombre ingresado en def main()
             global f #global ayuda a que esta variable se pueda usar fuera de esta funcion
             csv = open('ftp_{}_ping.csv'.format(filename), 'w') #aca se crea la variable para guardar los datos hechos por el ping o tambien llamados de latencia
             f = open("ftp_{}".format(filename), "wb") #en esta variable se crea un archivo binaRIO para almacenar los archivos recibidos por FTP
-        print(ftp.retrlines('LIST imagenes_proyecto_final')) #esta linea muestra los archivos que hay en el directorio raiz del servidor 
-        ftp.cwd("imagenes_proyecto_final") # "change work directory" cambia el directorio a la carpeta seleccionada que es donde estan los archivos que buscamos.
-        ftp.retrbinary("RETR {}".format(filename), callback) #LINEA MAS IMPORTANTE DEL CODIGO: Solicita al servidor que envie el archivo dado por el parametro filename en binario. 
-        #Así mismo, callback se usa cada vez que llega un paquete y se define en la funcion "callback". 
-        csv.close() #cierra el archivo csv
-        ftp.quit() #cierra la conexion ftp 
-        f.close() #cierra el archivo en el que se almacena la descarga 
+            print(ftp.retrlines('LIST imagenes_proyecto_final')) #esta linea muestra los archivos que hay en el directorio raiz del servidor 
+            ftp.cwd("imagenes_proyecto_final") # "change work directory" cambia el directorio a la carpeta seleccionada que es donde estan los archivos que buscamos.
+            ftp.retrbinary("RETR {}".format(filename), callback) #LINEA MAS IMPORTANTE DEL CODIGO: Solicita al servidor que envie el archivo dado por el parametro filename en binario. 
+            #Así mismo, callback se usa cada vez que llega un paquete y se define en la funcion "callback". 
+            csv.close() #cierra el archivo csv
+            ftp.quit() #cierra la conexion ftp 
+            f.close() #cierra el archivo en el que se almacena la descarga 
     except all_errors as e: #se hace una implementacion de la libreria para manejar las excepciones mas comunes de FTP
         print(e) #imprime el error 
         ftp.quit() #cierra la conexion ftp
