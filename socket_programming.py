@@ -15,7 +15,7 @@ def descargar(archivo:str)->None: #funcion para descargar los archivos por socke
         client_socket.bind((client_name, client_port)) #se asocia el socket previamente creado a un puerto TCP (49809)
         client_socket.connect((server_name, server_port))#Se establece una conexion TCP con el servidor del proyecto.
         archivo_descarga = archivo.encode() #se toma el parametro archivo y se codifica en una variable con utf-8
-        client_socket.send(archivo_descarga) #se establece el nombre del archivo codificado en la conexion TCP
+        client_socket.send(archivo_descarga) #se envia el nombre del archivo codificado en la conexion TCP
         info = client_socket.recv(4096) #Se recibe la respuesta del servidor con la informacion proporcionada
         print(info) #se imprime la informacion
         if info: #condicion respecto a la informacion recibida 
