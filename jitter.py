@@ -12,7 +12,7 @@ for i in f:
     # print(i)
 # l = p
 for j in range(len(l)-1):
-    d = abs(l[j+1]-l[j])
+    d = l[j+1]-l[j]
     # print(d)
     delta += d
 
