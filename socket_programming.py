@@ -1,3 +1,10 @@
+""" 
+El código de referencia utilizado para desarrollar el funcionamiento básico de este código es el capítulo 2.7.2 
+Socket programming with TCP del libro guía del curso, Computer Networking: A top Down Approach de James F. Kurose
+y Keith W. Ross. 
+Se utilizó la documentación oficial de las librerias utilizadas para aprender a utilizarlas. 
+"""
+
 import socket #Libreria importada para utilizar el socket
 import os #Libreria importada para utilizar reportar excepciones
 from pythonping import ping #Libreria importada para hsce un ping  

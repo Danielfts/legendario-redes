@@ -1,3 +1,6 @@
+""" 
+ Para desarrollar este código sólo se hizo uso de la documentación oficial de las librerias de python utilizadas. 
+ """
 from ftplib import FTP #Libreria fundamental, facilita utilizar FTP con python 
 from ftplib import all_errors
 from pythonping import ping
