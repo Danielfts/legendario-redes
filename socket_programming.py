@@ -7,7 +7,7 @@ Se utilizó la documentación oficial de las librerias utilizadas para aprender 
 
 import socket #Libreria importada para utilizar el socket
 import os #Libreria importada para utilizar reportar excepciones
-from pythonping import ping #Libreria importada para hsce un ping  
+from pythonping import ping #Libreria importada para hace un ping  
 
 client_name = '0.0.0.0' #datos del cliente
 client_port = 49809 #datos del cliente

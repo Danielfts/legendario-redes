@@ -1,6 +1,6 @@
 """ 
  Para desarrollar este código sólo se hizo uso de la documentación oficial de las librerias de python utilizadas. 
- """
+"""
 from ftplib import FTP #Libreria fundamental, facilita utilizar FTP con python 
 from ftplib import all_errors
 from pythonping import ping
@@ -37,8 +37,6 @@ def download(filename): #usa como parametro el nombre ingresado en def main()
             f.close() #cierra el archivo en el que se almacena la descarga 
     except all_errors as e: #se hace una implementacion de la libreria para manejar las excepciones mas comunes de FTP
         print(e) #imprime el error 
-        ftp.quit() #cierra la conexion ftp
-        f.close() #cierra el arvchivo en el que se almacena la descarga
 
 def main(): # recibe el nombre del archivo y llama la funcion principal
     file = input("ingrese el nombre del archivo: ")
